@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운트다운 타이머</title>
+    <link rel="stylesheet" href="countdown timer.css">
+</head>
+<body>
+
+    <h1>10초 카운트다운 타이머</h1>
+    <div id="timer">10</div>
+    <button class="btn" id="startBtn">시작</button>
+    <button class="btn" id="resetBtn">리셋</button>
+
+    <script>
+        let timeLeft = 10;
+        let timerId = null;
+
+        const timerDisplay = document.getElementById("timer");
+        const startBtn = document.getElementById("startBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        function startCountdown(){
+            if(timerId) return;
+
+            timerId = setInterval(function(){ //setInterval: 특정 코드를 일정한 시간 간격마다 반복 실행하는 함수
+                timeLeft--;
+                timerDisplay.innerText = timeLeft;
+
+                if(timeLeft <= 0){
+                    clearInterval(timerId);
+                    timerDisplay.innerText = "타이머 종료!";
+                    timerId = null;
+                }
+            }, 1000);
+        }
+
+        function resetCountdown(){
+            clearInterval(timerId);
+            timeLeft = 10;
+            timerDisplay.innerText = timeLeft;
+            timerId = null;
+        }
+
+        startBtn.addEventListener("click", startCountdown);
+        resetBtn.addEventListener("click", resetCountdown);
+    </script>
+</body>
+</html>
