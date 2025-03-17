@@ -1,0 +1,9 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out; /*부드러운 크기 변경*/
+}
